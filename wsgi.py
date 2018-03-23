@@ -1,7 +1,15 @@
 from flask import Flask, Response, request
 from viberbot import Api
 from viberbot.api.bot_configuration import BotConfiguration
-from viberbot.api.viber_requests import viber_request
+from viberbot.api.messages import VideoMessage
+from viberbot.api.messages.text_message import TextMessage
+import logging
+
+from viberbot.api.viber_requests import ViberConversationStartedRequest
+from viberbot.api.viber_requests import ViberFailedRequest
+from viberbot.api.viber_requests import ViberMessageRequest
+from viberbot.api.viber_requests import ViberSubscribedRequest
+from viberbot.api.viber_requests import ViberUnsubscribedRequest
 
 application = Flask(__name__)
 
@@ -18,12 +26,15 @@ viber = Api(BotConfiguration(
 
 @application.route("/", methods=['POST'])
 def hello():
+    viber_request = viber.parse_request(request.get_data())
 
-    message = viber_request.message
-    # lets echo back
-    viber.send_messages(viber_request.sender.id, [
-        message
-    ])
+    if isinstance(viber_request, ViberMessageRequest):
+        message = viber_request.message
+        # lets echo back
+        viber.send_messages(viber_request.sender.id, [
+            message
+        ])
+
     return Response(status=200)
 
 if __name__ == "__main__":
