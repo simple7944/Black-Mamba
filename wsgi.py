@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 from viberbot import Api
 from viberbot.api.bot_configuration import BotConfiguration
 
@@ -11,12 +11,12 @@ viber = Api(BotConfiguration(
     auth_token='47903e4860a7d433-88367fbaec064c17-feb50e42a2f20d9c'
 ))
 
-event_types = viber.set_webhook('https://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com:8080/')
+# viber.set_webhook('https://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com:8080/')
 
 @application.route("/")
 def hello():
 
-    return "hello"
+    return Response(status=200)
 
 if __name__ == "__main__":
      application.run()
