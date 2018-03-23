@@ -27,6 +27,18 @@ viber = Api(BotConfiguration(
 
 @application.route("/", methods=['POST'])
 def hello():
+    viber_request = viber.parse_request(request.get_data())
+
+    if isinstance(viber_request, ViberMessageRequest):
+        message = viber_request.message
+        # lets echo back
+        viber.send_messages(viber_request.sender.id, [
+            message
+    ])
+
+        viber.send_messages(viber_request.get_user.id, [
+            TextMessage(text="thanks for subscribing!")
+        ])
 
     return Response(status=200)
 

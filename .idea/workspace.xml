@@ -19,8 +19,8 @@
       <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+            <state relative-caret-position="338">
+              <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -266,8 +266,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+        <state relative-caret-position="338">
+          <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
