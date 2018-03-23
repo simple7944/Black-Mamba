@@ -22,7 +22,7 @@ viber = Api(BotConfiguration(
     auth_token='47903e4860a7d433-88367fbaec064c17-feb50e42a2f20d9c'
 ))
 
-viber.set_webhook('https://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com/')
+
 
 @application.route("/", methods=['POST'])
 def hello():
