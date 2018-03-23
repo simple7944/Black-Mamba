@@ -15,8 +15,8 @@ viber = Api(BotConfiguration(
 
 @application.route("/")
 def hello():
-    # return "soviet"
-    return viber.name
+
+    return "hello"
 
 if __name__ == "__main__":
      application.run()
