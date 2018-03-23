@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 from viberbot import Api
 from viberbot.api.bot_configuration import BotConfiguration
 
@@ -8,15 +8,6 @@ application = Flask(__name__)
 
 
 
-
-
-bot_configuration = BotConfiguration(
-	name='SovietBot',
-	avatar='http://media.wplm.pl/pictures/wp/photo/2012-10/414/414/hammer_and_sicklesvg.jpg',
-	auth_token='47903e4860a7d433-88367fbaec064c17-feb50e42a2f20d9c'
-)
-viber = Api(bot_configuration)
-
 # viber = Api(BotConfiguration(
 #     name='PythonSampleBot',
 #     avatar='http://media.wplm.pl/pictures/wp/photo/2012-10/414/414/hammer_and_sicklesvg.jpg',
@@ -25,9 +16,9 @@ viber = Api(bot_configuration)
 
 # viber.set_webhook('https://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com:8080/')
 
-@application.route("/")
+@application.route("/", methods=['POST'])
 def hello():
-
+    logger.debug("received request. post data: {0}".format(request.get_data()))
     return Response(status=200)
 
 if __name__ == "__main__":
