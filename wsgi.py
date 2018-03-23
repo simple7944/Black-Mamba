@@ -11,7 +11,7 @@ viber = Api(BotConfiguration(
     auth_token='47903e4860a7d433-88367fbaec064c17-feb50e42a2f20d9c'
 ))
 
-# event_types = viber.set_webhook('http://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com:8080/')
+event_types = viber.set_webhook('https://black-mamba-black-mamba.1d35.starter-us-east-1.openshiftapps.com:8080/')
 
 @application.route("/")
 def hello():
