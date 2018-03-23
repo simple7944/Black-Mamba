@@ -24,34 +24,11 @@ viber = Api(BotConfiguration(
 
 
 
+
 @application.route("/", methods=['POST'])
 def hello():
-    logging.debug("received request. post data: {0}".format(request.get_data()))
-    # every viber message is signed, you can verify the signature using this method
-    if not viber.verify_signature(request.get_data(), request.headers.get('X-Viber-Content-Signature')):
-        return Response(status=403)
-
-    # this library supplies a simple way to receive a request object
-    viber_request = viber.parse_request(request.get_data())
-
-    if isinstance(viber_request, ViberMessageRequest):
-        message = viber_request.message
-        # lets echo back
-        viber.send_messages(viber_request.sender.id, [
-            message
-        ])
-    elif isinstance(viber_request, ViberSubscribedRequest):
-        viber.send_messages(viber_request.get_user.id, [
-            TextMessage(text="thanks for subscribing!")
-        ])
-
-        logging.warn("client failed receiving message. failure: {0}".format(viber_request))
-
-    viber.send_messages(viber_request.get_user.id, [
-            TextMessage(text="thanks for subscribing!")
-        ])
 
     return Response(status=200)
 
 if __name__ == "__main__":
-     application.run()
+     application.run(port=5444)
