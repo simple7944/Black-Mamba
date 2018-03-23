@@ -4,7 +4,7 @@ from viberbot.api.bot_configuration import BotConfiguration
 from viberbot.api.messages import VideoMessage
 from viberbot.api.messages.text_message import TextMessage
 import logging
-
+import json
 from viberbot.api.viber_requests import ViberConversationStartedRequest
 from viberbot.api.viber_requests import ViberFailedRequest
 from viberbot.api.viber_requests import ViberMessageRequest
@@ -32,7 +32,7 @@ def hello():
         return Response(status=403)
 
     # this library supplies a simple way to receive a request object
-    viber_request = viber.parse_request(request.get_json())
+    viber_request = viber.parse_request(json.loads(request.content.decode('utf-8')))
 
     if isinstance(viber_request, ViberMessageRequest):
         message = viber_request.message
