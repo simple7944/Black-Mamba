@@ -18,7 +18,7 @@ application = Flask(__name__)
 
 @application.route("/", methods=['POST'])
 def hello():
-    logger.debug("received request. post data: {0}".format(request.get_data()))
+
     return Response(status=200)
 
 if __name__ == "__main__":
