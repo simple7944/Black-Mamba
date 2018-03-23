@@ -32,7 +32,7 @@ def hello():
         return Response(status=403)
 
     # this library supplies a simple way to receive a request object
-    viber_request = viber.parse_request(json.loads(request.content.decode('utf-8')))
+    viber_request = viber.parse_request(request.get_data())
 
     if isinstance(viber_request, ViberMessageRequest):
         message = viber_request.message
